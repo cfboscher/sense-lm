@@ -1,4 +1,4 @@
-from utils.prepare_data import prepare_data
+from utils.prepare_data import prepare_data_step_1
 
 from step_1.data_loader import get_data_loader
 from step_1.classifier import SenseLM_BinaryClassifier
@@ -19,10 +19,10 @@ import numpy as np
 
 def run(config):
 
-    df = prepare_data(config.data_path, config.dataset)
+    df = prepare_data_step_1(config.data_path, config.dataset)
 
     print('Splitting data...')
-    train_data, test_data = train_test_split(df, test_size=0.2, random_state=config.random_seed)
+    train_data, test_data = train_test_split(df, test_size=0.1, random_state=config.random_seed)
 
     # Load the BERT tokenizer.
     print('Loading BERT tokenizer...')

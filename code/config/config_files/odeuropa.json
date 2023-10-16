@@ -1,6 +1,7 @@
 {
   "config":
   {
-    "dataset": "odeuropa"
+    "dataset": "odeuropa",
+    "steps" : "1"
   }
 }

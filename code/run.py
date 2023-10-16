@@ -4,6 +4,7 @@ from config.config import Config
 from config.config import update_config
 
 from step_1 import step_1
+from step_2 import step_2
 
 import os
 import json
@@ -26,6 +27,7 @@ if __name__ == '__main__':
         step_1.run(config)
 
     if config.steps=="all" or config.steps=="2":
+        step_2.run(config)
         pass
 
 

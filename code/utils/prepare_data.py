@@ -4,11 +4,11 @@ import pandas as pd
 from utils.preprocess_text import preprocess_text
 
 
-def prepare_data(root_path, dataset):
+def prepare_data_step_1(root_path, dataset):
     if dataset == 'odeuropa':
 
         folder = os.path.join(root_path, "Odeuropa/benchmarks_and_corpora/benchmarks/EN/webanno")
-        cleansed_path = os.path.join(folder, "odeuropa_preprocessed.csv")
+        cleansed_path = os.path.join(root_path, "Odeuropa/benchmarks_and_corpora/benchmarks/EN/odeuropa_preprocessed_step1.csv")
 
         # Load preprocessed data if already exist
         if os.path.isfile(cleansed_path):
@@ -65,6 +65,75 @@ def prepare_data(root_path, dataset):
         data = None
 
     return df
+
+
+def prepare_data_step_2(root_path, dataset):
+    if dataset == 'odeuropa':
+
+        folder = os.path.join(root_path, "Odeuropa/benchmarks_and_corpora/benchmarks/EN/webanno")
+        cleansed_path = os.path.join(folder, "odeuropa_preprocessed_step2.csv")
+
+        # Load preprocessed data if already exist
+        if os.path.isfile(cleansed_path):
+            df = pd.read_csv(cleansed_path)
+
+        else:
+
+            print("Preprocessing Data")
+
+            dataframes = []
+            for subfolder in sorted(os.listdir(folder)):
+                subfolder_path = subfolder
+                tables = []
+                subfolder_path = os.path.join(folder, subfolder_path)
+                for file in os.scandir(subfolder_path):
+                    if file.is_file():
+                        annotation_path = os.path.join(subfolder_path, file.name)
+
+                        table = pd.read_table(annotation_path, comment='#', error_bad_lines=False, engine="python",
+                                              header=None, quoting=3, quotechar=None)
+                        table = table.rename(columns={0: "token_id", 1: "char_range", 2: "token", 3: "ref_type"})
+
+                        if not 'ref_type' in table:
+                            continue
+                        table['filename'] = annotation_path.split('/')[-2]
+                        tables.append(table)
+
+                dataframes.append(pd.concat(tables, ignore_index=True, axis=0))
+
+            refs = pd.concat(dataframes)
+
+            refs['sentence_id'] = refs['token_id'].apply(lambda x: x.split('-')[0])
+            refs = refs.drop_duplicates(subset=['filename', 'sentence_id', 'token_id'])
+
+            df = refs.groupby(['filename', 'sentence_id', 'ref_type'], as_index=False).agg(
+                {'token': ' '.join})
+
+            sentences = refs.groupby(['filename', 'sentence_id'], as_index=False).agg({'token': ' '.join}).rename(
+                columns={'token': 'sentence'})
+
+            df = df[df['ref_type'].isin(
+                ['Smell\\_Source', 'Smell\\_Word', 'Quality', 'Odour\\_Carrier', 'Evoked\_Odorant'])]
+
+
+            df = pd.merge(df, sentences, on=['filename', 'sentence_id'])
+            # df = df[
+            #     (df['ref_type'] != 'nan') & (df['ref_type'] != '_') & (df['ref_type'] != '*') & (
+            #                 df['ref_type'] != 'None')]
+
+            df = df.groupby(['filename', 'sentence_id', 'sentence'], as_index=False).agg({'token': ' '.join})
+            df = pd.merge(df, df[['filename', 'sentence_id', 'ref_type']],
+                              on=['filename', 'sentence_id'])
+            df = df.drop_duplicates(subset=['filename', 'sentence_id'], keep='first').reset_index()
+            
+
+
+
+    elif dataset == 'auditory':
+        data = None
+
+    return df
+
 
 
 def contains_ref(labels):
