@@ -53,10 +53,8 @@ def run(config):
     test_data = test(tokenizer, model, test_data, train_data, input_ids_t, attention_mask_t,
                                                       token_type_ids_t, config)
 
-
     test_data = eval_roberta(test_data)
-    print("Precision after Step 2.1", test_data['prec'].mean())
-    print("Recall after Step 2.1", test_data['rec'].mean())
+
 
 
     # STEP 2.2
