@@ -1,14 +1,14 @@
 import os
 import pandas as pd
 
-from utils.preprocess_text import preprocess_text
+from utils.preprocess_text import preprocess_text, preprocess_column, clean_text
 
 
 def prepare_data_step_1(root_path, dataset):
     if dataset == 'odeuropa':
 
         folder = os.path.join(root_path, "Odeuropa/benchmarks_and_corpora/benchmarks/EN/webanno")
-        cleansed_path = os.path.join(root_path, "Odeuropa/benchmarks_and_corpora/benchmarks/EN/odeuropa_preprocessed_step1.csv")
+        cleansed_path = os.path.join(root_path, "odeuropa_preprocessed_step1.csv")
 
         # Load preprocessed data if already exist
         if os.path.isfile(cleansed_path):
@@ -64,6 +64,7 @@ def prepare_data_step_1(root_path, dataset):
     elif dataset == 'auditory':
         data = None
 
+
     return df
 
 
@@ -71,7 +72,7 @@ def prepare_data_step_2(root_path, dataset):
     if dataset == 'odeuropa':
 
         folder = os.path.join(root_path, "Odeuropa/benchmarks_and_corpora/benchmarks/EN/webanno")
-        cleansed_path = os.path.join(folder, "odeuropa_preprocessed_step2.csv")
+        cleansed_path = os.path.join(root_path, "odeuropa_preprocessed_step2.csv")
 
         # Load preprocessed data if already exist
         if os.path.isfile(cleansed_path):
@@ -117,21 +118,25 @@ def prepare_data_step_2(root_path, dataset):
 
 
             df = pd.merge(df, sentences, on=['filename', 'sentence_id'])
-            # df = df[
-            #     (df['ref_type'] != 'nan') & (df['ref_type'] != '_') & (df['ref_type'] != '*') & (
-            #                 df['ref_type'] != 'None')]
+            df = df[
+                (df['ref_type'] != 'nan') & (df['ref_type'] != '_') & (df['ref_type'] != '*') & (
+                            df['ref_type'] != 'None')]
 
             df = df.groupby(['filename', 'sentence_id', 'sentence'], as_index=False).agg({'token': ' '.join})
-            df = pd.merge(df, df[['filename', 'sentence_id', 'ref_type']],
-                              on=['filename', 'sentence_id'])
-            df = df.drop_duplicates(subset=['filename', 'sentence_id'], keep='first').reset_index()
-            
 
+            df = df.drop_duplicates(subset=['filename', 'sentence_id'], keep='first').reset_index()
+            df['ref_type'] = 'Olfactive'
+            
+            df = preprocess_column(df, 'sentence', 'clean_sentence')
+            df = preprocess_column(df, 'token', 'clean_token')
+            df.to_csv(cleansed_path)
 
 
     elif dataset == 'auditory':
         data = None
-
+        
+    df['clean_sentence'] = df['sentence'].apply(lambda x: clean_text(x))
+    df['clean_token'] = df['token'].apply(lambda x: clean_text(x))
     return df
 
 
@@ -164,3 +169,5 @@ def mark_beginning_and_intermediate_token(label):
                 tokens[i + 1] = tokens[i + 1].replace("B-", "I-")
 
     return ' '.join(tokens)
+
+

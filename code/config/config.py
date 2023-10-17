@@ -5,7 +5,7 @@ class Config:
     def __init__(self):
         # General Settings
         self.device = 'cuda'
-        self.data_path = '../data'
+        self.data_path = '../../data'
         self.dataset = 'odeuropa'
         self.random_seed = 42
 
@@ -22,9 +22,10 @@ class Config:
         self.pretrained_parameters_step2 = ""
         self.epochs_step2 = 20
         self.learning_rate_step2 = 2e-5
+        self.tokenizer_max_len_step2 = 303
         self.epsilon_step2 = 1e-8
-        self.T = 4.5
-        self.U = 3.5
+        self.T = 3.5
+        self.U = 0.65
 
 
 
