@@ -1,0 +1,25 @@
+{
+  "config":
+  {
+
+        "device" : "cuda" ,
+        "data_path" : "../data" ,
+        "dataset" : "auditory" ,
+        "random_seed" :42,
+
+        "steps" :"2",
+
+
+        "pretrained_parameters_step1" :"bert-base-uncased",
+        "epochs_step1" :20,
+        "learning_rate_step1" :2e-5,
+        "epsilon_step1" :1e-8,
+
+        "epochs_step2" :20,
+        "learning_rate_step2" :2e-5,
+        "tokenizer_max_len_step2" :303,
+        "epsilon_step2" :1e-8,
+        "T" :4.5,
+        "U" :0.75
+  }
+}
