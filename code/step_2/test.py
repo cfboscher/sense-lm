@@ -47,6 +47,8 @@ def test(tokenizer, model, train_data, test_data, input_ids_t, attention_mask_t,
     # skf split will generate train and test data
     for fold, (idxT, idxV) in enumerate(skf.split(input_ids_t, test_data.ref_type.values)):
 
+        if fold !=4 :
+            continue
         begin = time()
 
         idxV = np.concatenate((idxT, idxV), axis=None)

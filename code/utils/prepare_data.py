@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import ast
 
 from utils.preprocess_text import preprocess_text, preprocess_column, clean_text
 
@@ -62,7 +63,15 @@ def prepare_data_step_1(root_path, dataset):
         print(df)
 
     elif dataset == 'auditory':
-        data = None
+
+        cleansed_path = os.path.join(root_path, "preprocessed/auditory_preprocessed_step1.csv")
+
+        # Load preprocessed data if already exist
+        if os.path.isfile(cleansed_path):
+            df = pd.read_csv(cleansed_path)
+        else:
+            df = pd.read_csv(os.path.join(root_path, "Auditory/auditory_dataset_full.csv"))
+            df.to_csv(cleansed_path)
 
 
     return df
@@ -133,8 +142,22 @@ def prepare_data_step_2(root_path, dataset):
 
 
     elif dataset == 'auditory':
-        data = None
-        
+
+        cleansed_path = os.path.join(root_path, "preprocessed/auditory_preprocessed_step2.csv")
+
+        # Load preprocessed data if already exist
+        if os.path.isfile(cleansed_path):
+            df = pd.read_csv(cleansed_path)
+        else:
+            df = pd.read_csv(os.path.join(root_path, "Auditory/auditory_dataset_positives.csv"))
+
+            df = df[~df['label'].isna()]
+            df['label'] = df['label'].apply(lambda x: ast.literal_eval(x))
+            df['token'] = df.apply(lambda x: ' '.join([y['text'] for y in x.label]), axis=1)
+            df['sentence'] = df['text']
+            df['ref_type'] = 'Olfactive'
+            df.to_csv('../data/preprocessed/auditor_preprocessed_step2.csv')
+
     df['clean_sentence'] = df['sentence'].apply(lambda x: clean_text(x))
     df['clean_token'] = df['token'].apply(lambda x: clean_text(x))
     return df

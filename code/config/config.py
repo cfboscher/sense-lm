@@ -5,12 +5,12 @@ class Config:
     def __init__(self):
         # General Settings
         self.device = 'cuda'
-        self.data_path = '../../data'
-        self.dataset = 'odeuropa'
+        self.data_path = '../data'
+        self.dataset = 'auditory'
         self.random_seed = 42
 
         # Please set either "all", "1" or "2"
-        self.steps = "all"
+        self.steps = "1"
 
         # Settings of Step 1
         self.pretrained_parameters_step1 = "emanjavacas/MacBERTh"
@@ -25,7 +25,7 @@ class Config:
         self.tokenizer_max_len_step2 = 303
         self.epsilon_step2 = 1e-8
         self.T = 3.5
-        self.U = 0.65
+        self.U = 0.95
 
 
 

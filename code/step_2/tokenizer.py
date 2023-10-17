@@ -8,8 +8,8 @@ def load_tokenizer():
     # creating a bytelevel tokenizer
     # this tokenizer has "" ids, type_ids, tokens, offsets, attention_mask, special_tokens_mask, overflowing "" these attributes
     # the byte level BPE tokenizer done something like subword tokenizer where it will break a signle word into two word , example: faster could be fast and ##er
-    tokenizer = tokenizers.ByteLevelBPETokenizer(vocab='step_2/roberta_classifier/vocab-roberta-base.json',
-                                                 merges='step_2/roberta_classifier/merges-roberta-base.txt',
+    tokenizer = tokenizers.ByteLevelBPETokenizer(vocab='step_2/roberta-base/vocab-roberta-base.json',
+                                                 merges='step_2/roberta-base/merges-roberta-base.txt',
                                                  lowercase=True,
                                                  add_prefix_space=True)
 

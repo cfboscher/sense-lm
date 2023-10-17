@@ -7,7 +7,7 @@ def sensory_tag_token(token, sensoriality, sensorimotor_norms):
         score = sensorimotor_norms[token][sensoriality]
     else:
         score = 0
-        synonyms = wordnet.synsets(token)
+        synonyms = wordnet.synsets(str(token))
         candidates = list(set(chain.from_iterable([word.lemma_names() for word in synonyms])))
 
         for candidate in candidates:

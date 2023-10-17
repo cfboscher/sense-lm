@@ -1,7 +1,7 @@
 import argparse
 
-from code.config.config import Config
-from code.config.config import update_config
+from config.config import Config
+from config.config import update_config
 
 from step_1 import step_1
 from step_2 import step_2

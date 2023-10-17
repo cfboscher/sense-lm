@@ -30,8 +30,8 @@ def build_model(config):
     att = tf.keras.layers.Input((MAX_LEN,), dtype=tf.int32)
     tok = tf.keras.layers.Input((MAX_LEN,), dtype=tf.int32)
 
-    config = RobertaConfig.from_pretrained('step_2/roberta_classifier/config-roberta-base.json')
-    bert_model = TFRobertaModel.from_pretrained('step_2/roberta_classifier/roberta-base.h5', config=config)
+    config = RobertaConfig.from_pretrained('step_2/roberta-base/config-roberta-base.json')
+    bert_model = TFRobertaModel.from_pretrained('step_2/roberta-base/roberta-base.h5', config=config)
     x = bert_model(ids, attention_mask=att, token_type_ids=tok)
 
     x1 = tf.keras.layers.Dropout(0.05)(x[0])
