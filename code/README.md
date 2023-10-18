@@ -63,9 +63,10 @@ The config files must be structured as follows, based on the example of  `odeuro
         "device" : "cuda" ,
         "data_path" : "../data" ,
         "dataset" : "odeuropa" ,
+        
         "random_seed" :42,
     
-        "steps" :"2",
+        "steps" :"all",
 
 
         "pretrained_parameters_step1" :"emanjavacas/MacBERTh",
