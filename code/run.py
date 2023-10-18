@@ -25,6 +25,5 @@ if __name__ == '__main__':
 
     if config.steps=="all" or config.steps=="2":
         step_2.run(config)
-        pass
 
 
