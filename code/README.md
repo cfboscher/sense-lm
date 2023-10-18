@@ -19,7 +19,7 @@ cd step_2
 bash download_roberta.sh
 ```
 
-If  facing issues with the downloading of roberta, try to clone the repo with `git-lfs` instead, and rename the cloned files properly, as indicated in `step_2/download_roberta.sh`.
+If facing issues with the downloading of roberta, try to clone the repo with `git-lfs` instead, and rename the cloned files properly, as indicated in `step_2/download_roberta.sh`.
 
 
 
@@ -41,7 +41,7 @@ It contains the experimental parameters such as the `dataset`, that must be eith
 
 Then, according to the steps of SENSE-LM you want to run, the attribute `steps` as `"all"`, `"1"` or `"2"` (`"all"` by default).
 
-Other parameters are explicitely named experimental values.
+Other attributes are explicitely named after experimental parameters.
 
 ### Run experiments with custom configuration
 
