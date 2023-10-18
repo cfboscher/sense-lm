@@ -41,7 +41,7 @@ It contains the experimental parameters such as the `dataset`, that must be eith
 
 Then, according to the steps of SENSE-LM you want to run, the attribute `steps` as `"all"`, `"1"` or `"2"` (`"all"` by default).
 
-Other attributes are explicitely named after experimental parameters.
+Other attributes are explicitly named after experimental parameters.
 
 ### Run experiments with custom configuration
 
