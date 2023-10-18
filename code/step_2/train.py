@@ -93,8 +93,8 @@ def train(tokenizer, train_data,
                 all_rec.append(len([x for x in pred_words if x in true_words]) / len(true_words))
             true_pred_mapping_train[train_data.loc[k, 'clean_token']] = st
 
-        print('>>>> FOLD %i Precision=' % (fold + 1), np.mean(all_prec))
-        print('>>>> FOLD %i Recall=' % (fold + 1), np.mean(all_rec))
+        # print('>>>> FOLD %i Precision=' % (fold + 1), np.mean(all_prec))
+        # print('>>>> FOLD %i Recall=' % (fold + 1), np.mean(all_rec))
 
         print()
 
