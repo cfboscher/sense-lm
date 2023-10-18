@@ -6,20 +6,19 @@ class Config:
         # General Settings
         self.device = 'cuda'
         self.data_path = '../data'
-        self.dataset = 'auditory'
         self.random_seed = 42
 
-        # Please set either "all", "1" or "2"
-        self.steps = "1"
+        self.dataset = 'auditory' # Please set either "auditory" or "odeuropa"
+
+        self.steps = "all" # Please set either "all", "1" or "2"
 
         # Settings of Step 1
-        self.pretrained_parameters_step1 = "emanjavacas/MacBERTh"
+        self.pretrained_parameters_step1 = "bert-base-uncased" # HuggingFace URL of the Pytorch Model Parameters
         self.epochs_step1 = 20
         self.learning_rate_step1 = 2e-5
         self.epsilon_step1 = 1e-8
 
         # Settings of Step 2
-        self.pretrained_parameters_step2 = ""
         self.epochs_step2 = 20
         self.learning_rate_step2 = 2e-5
         self.tokenizer_max_len_step2 = 303

@@ -9,7 +9,7 @@ def prepare_data_step_1(root_path, dataset):
     if dataset == 'odeuropa':
 
         folder = os.path.join(root_path, "Odeuropa/benchmarks_and_corpora/benchmarks/EN/webanno")
-        cleansed_path = os.path.join(root_path, "odeuropa_preprocessed_step1.csv")
+        cleansed_path = os.path.join(root_path, "preprocessed/odeuropa_preprocessed_step1.csv")
 
         # Load preprocessed data if already exist
         if os.path.isfile(cleansed_path):
@@ -81,7 +81,7 @@ def prepare_data_step_2(root_path, dataset):
     if dataset == 'odeuropa':
 
         folder = os.path.join(root_path, "Odeuropa/benchmarks_and_corpora/benchmarks/EN/webanno")
-        cleansed_path = os.path.join(root_path, "odeuropa_preprocessed_step2.csv")
+        cleansed_path = os.path.join(root_path, "preprocessed/odeuropa_preprocessed_step2.csv")
 
         # Load preprocessed data if already exist
         if os.path.isfile(cleansed_path):

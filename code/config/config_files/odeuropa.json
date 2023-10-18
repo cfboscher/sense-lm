@@ -7,7 +7,7 @@
         "dataset" : "odeuropa" ,
         "random_seed" :42,
     
-        "steps" :"all",
+        "steps" :"2",
 
 
         "pretrained_parameters_step1" :"emanjavacas/MacBERTh",

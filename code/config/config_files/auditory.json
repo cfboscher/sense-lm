@@ -7,7 +7,7 @@
         "dataset" : "auditory" ,
         "random_seed" :42,
 
-        "steps" :"2",
+        "steps" :"all",
 
 
         "pretrained_parameters_step1" :"bert-base-uncased",
