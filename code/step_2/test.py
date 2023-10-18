@@ -56,18 +56,6 @@ def test(tokenizer, model, train_data, test_data, input_ids_t, attention_mask_t,
         print('### FOLD %i' % (fold + 1))
         print('#' * 25)
 
-        # clear the session
-        # K.clear_session()
-        # call the model
-        # model = build_model(config)
-
-        # fit the model by passing the train and validation data   which have been defined as idxT and IdxV
-        # attension mask will tells roBERTa which tokens are meaningful so roBERTa can ignore the rest
-        # model.fit([input_ids[idxT,], attention_mask[idxT,], token_type_ids[idxT,]], [start_tokens[idxT,], end_tokens[idxT,]],
-        #    epochs=3, batch_size=32, verbose=DISPLAY, callbacks= model_check_point_tensor_board(),
-        #    validation_data=([input_ids[idxV,],attention_mask[idxV,],token_type_ids[idxV,]],
-        #    [start_tokens[idxV,], end_tokens[idxV,]]))
-
         # print('Loading model...')
         model.load_weights('%s-roberta-%i.h5' % (VER, fold))
 

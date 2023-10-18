@@ -100,5 +100,5 @@ def train(tokenizer, train_data,
 
         e = time()
 
-        print(s - e)
+        print("Time Elapsed: ", e - s)
     return model
