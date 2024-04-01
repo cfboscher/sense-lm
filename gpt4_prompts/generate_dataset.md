@@ -1,12 +1,10 @@
 ### Auditory Dataset Generation
 
-We provide the protocol used to generate the Audi-1024
-tory dataset that we described in Section 4.1. We1025
-generate 200 positive examples of length 10 using1026
+We provide the protocol used to generate the Auditory dataset that we described in Section 4.1. We generate 200 positive examples of length 10 using
 the following prompt:
 
 
-* ***User**:  Could you generate 300 sentences of 10 words each, containing references to auditory experiences, and avoid repeating the same sentence structures? 
+* ***User**:  Could you generate 200 sentences of 10 words each, containing references to auditory experiences, and avoid repeating the same sentence structures? 
 You may also include some different kinds of descriptions: what produces the auditory experience or the quality of sound, for different types of sounds (people, objects, or environment)*
 
 
@@ -21,7 +19,7 @@ You may also include some different kinds of descriptions: what produces the aud
 Then, we generate 200 negative examples of
 length 10 as follows:
 
-* ***User**:  Could you generate 300 sentences with 10 words for each, making sure they absolutely do not make any reference to any sound experience, and avoid repeating the same sentence structures ?*
+* ***User**:  Could you generate 200 sentences with 10 words for each, making sure they absolutely do not make any reference to any sound experience, and avoid repeating the same sentence structures ?*
 
 
 * ***GPT-4**:*
