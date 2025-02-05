@@ -13,6 +13,7 @@ The repository of ["SENSE-LM : A Synergy of Language Models and Sensorimotor Rep
 
 Please cite the original paper in case of use of code or/and dataset. 
 
+*Cédric Boscher, Christine Largeron, Véronique Eglin, and Elöd Egyed-Zsigmond. 2024. SENSE-LM : A Synergy between a Language Model and Sensorimotor Representations for Auditory and Olfactory Information Extraction. In Findings of the Association for Computational Linguistics: EACL 2024, pages 1695–1711, St. Julian’s, Malta. Association for Computational Linguistics.*
 
 ```
 @inproceedings{boscher-etal-2024-sense,
@@ -34,4 +35,4 @@ Please cite the original paper in case of use of code or/and dataset.
 }
 ```
 
-*Cédric Boscher, Christine Largeron, Véronique Eglin, and Elöd Egyed-Zsigmond. 2024. SENSE-LM : A Synergy between a Language Model and Sensorimotor Representations for Auditory and Olfactory Information Extraction. In Findings of the Association for Computational Linguistics: EACL 2024, pages 1695–1711, St. Julian’s, Malta. Association for Computational Linguistics.*
+
