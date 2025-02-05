@@ -6,8 +6,8 @@ The repository of ["SENSE-LM : A Synergy of Language Models and Sensorimotor Rep
 
 
 ## Usage
-- The source code of SENSE-LM along with instructions to run the code are in ```code```. Please refer to ```code/README.md``` for further instructions.
-- The datasets used in the experiments are in ```data```. Please refer to ```data/README.md``` for further instructions.
+- The [source code](https://github.com/cfboscher/sense-lm/tree/main/code) of SENSE-LM along with instructions to run the code are in ```code```. Please refer to ```code/README.md``` for further instructions.
+- The [datasets](https://github.com/cfboscher/sense-lm/tree/main/data) used in the experiments are in ```data```. Please refer to ```data/README.md``` for further instructions.
 
 ## Citation
 
