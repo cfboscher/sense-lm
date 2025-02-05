@@ -4,13 +4,15 @@
 
 The repository of ["SENSE-LM : A Synergy of Language Models and Sensorimotor Representations for Sensory Information Extraction"](https://aclanthology.org/2024.findings-eacl.119/).
 
-Please cite the original paper in case of use (see below). 
 
 ## Usage
 - The source code of SENSE-LM along with instructions to run the code are in ```code```. Please refer to ```code/README.md``` for further instructions.
 - The datasets used in the experiments are in ```data```. Please refer to ```data/README.md``` for further instructions.
 
-## Paper Reference
+## Citation
+
+Please cite the original paper in case of use of code or/and dataset. 
+
 
 ```
 @inproceedings{boscher-etal-2024-sense,
