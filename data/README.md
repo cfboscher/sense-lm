@@ -28,6 +28,9 @@ With the following attributes :
 - contains_ref : True or False, indicates whether the sentence includes an auditory reference (positive) or not (negative)
 - label : List of terms labelled as evoking a sound experience. `start` and `end` mark the characters indices, `text`contains the corresponding text, and `labels` indicate the current label applied (in this case, a unique label `SOUND` is used for all terms.)
 ### Generation and Annotation Protocol
+
+The prompts used for the dataset creation are provided [here](https://github.com/cfboscher/sense-lm/tree/main).
+
 We carefully ask GPT-4 to create examples respecting a realistic diversity of sentence structures with different sentence lengths (400 sentences of maximum 10 words, 400 sentences of between 25 and 35 words, and 200 sentences between 35 and 50 words) with a ratio of positive sentences examples of 0.5, as detailed in the appendices of our paper.
 We check the consistence of 
 the data manually; we corrected 11 misclassified sentences on 1000 generated examples. We did not notice any personal data, nor offensive content.
